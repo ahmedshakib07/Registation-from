@@ -1,0 +1,267 @@
+<html>
+<head>
+    
+    <title>Document</title>
+
+    <style>
+        *
+           {
+            text-align: center;
+        }
+        
+        .bold
+        {
+            font-weight: bolder;
+            font-size: 20px;
+        }
+        #d1
+        {
+            padding-top: 5px;
+            background-color:none;
+            height: 170px;
+            margin-bottom: 20px;
+        }
+        #d1 p
+        {
+            color:none;
+            font-size: 25px;
+            font-weight: bold;
+        }
+        #d1 input, button
+        {
+            height: 25px;
+        }
+        #d1 button
+        {
+            background-color: none;
+            
+            height: 30px;
+            border: none;
+            color: none;
+        }
+       
+        }
+        #show
+        {
+            background-color:none;     
+            padding: 10px;
+            margin: 10px;   
+            color: none;
+        }
+       
+
+    </style>
+</head>
+<body>
+    <div id="d1">
+    <h3>Answer to the question number 01</h3>
+    <B>Enter a Positive Integer Number :</B> <input type="number" id="num1" >
+    <button onclick="fibo()"> Fibonacci Series</button>
+    <p id="display"> </p>
+</div>
+
+    <div id="d3">
+    <h3>Answer to the Question Number 03</h3>
+        <br>
+        <br>
+        <form autocomplete="on" style="font-weight: bold;">
+            <label for="fname">Enter Your Name: *</label>
+            <input type="text" class="req" id="name" name="name" > <br>
+            <br>
+            <label>Enter your ID: *</label>
+            <input type="number" id="id" name="id" ><br>
+            <br>
+            <label>Enter Your University Name: </label>
+            <input type="text" id="uni"> <br>
+            <br>
+            <label>Enter Your Department Name: *</label>
+            <select name="dept">
+                <option value="" disabled selected>Please select your Department</option>                
+                    <option value="CSE">CSE</option>
+                    <option value="EEE">EEE</option>
+                    <option value="Tex">Texttile</option>                
+                    <option value="BBA">BBA</option>
+               
+            </select> 
+            <br><br>
+            <p style="color: red;"><i>Educational Information</i></p>
+            
+            <p class="bold">HSC Information</p>
+            <label>Educational Institute: </label>
+            <input type="text" id="hsci">
+            <br><br>
+            <label>HSC GPA: </label>
+            <input type="number" id="hscgpa">
+
+            <p class="bold">SSC Information</p>
+            <label>Educational Institute: </label>
+            <input type="text" id="ssci"><br><br>
+            <label>SSC GPA: </label>
+            <input type="number" id="sscgpa"><br><br>
+            <label>Languages Known: </label><br><br>
+            <input class="box" type="checkbox" value="C" checked>C <br>
+            <input class="box" type="checkbox" value="C++">C++ <br>
+            <input class="box" type="checkbox" value="Python">Python <br>
+            <input class="box" type="checkbox" value="Java">Java <br>
+            <input class="box" type="checkbox" value="HTML">HTML <br>
+            <input class="box" type="checkbox" value="Others">Others <br><br>
+            <br>
+            <input type="reset" onclick="form_valid()">
+            <button onclick="form_valid()">Submit</button>
+        </form>
+        <p>* Fields are required</p>
+    </div>
+
+    <div id="show" style="text-align: center; margin-top: 50px;">
+        <h3 style="color: red;">Personal Information</h3>
+        <p id="a1">Student Name: </p>
+        <p id="a2">Student ID: </p>
+        <p id="a3">University Name: </p>
+        <h3>Educational Information</h3>
+        <table align="center" border="1px">
+            <tr>
+                <th>Degree</th>
+                <th>Institute</th>
+                <th>Result</th>
+            </tr>
+            <tr>
+                <td>SSC</td>
+                <td id="sscI"></td>
+                <td id="sscR"></td>
+            </tr>
+            <tr>
+                <td>HSC</td>
+                <td id="hscI"></td>
+                <td id="hscR"></td>
+            </tr>
+            
+        </table>
+        <p id="last"></p>
+    </div>
+    <script>
+    function form_valid()
+        {
+            var name = document.getElementById("name").value;
+            if(name=="")
+            {
+                alert("Name can not be empty");
+            }
+            var temp = "Student Name: " + name;
+            document.getElementById("a1").innerHTML = temp;
+
+            var id = document.getElementById("id").value;
+            if(id=="")
+            {
+                alert("ID can not be empty");
+            }
+            document.getElementById("a2").innerHTML = "Student ID: " + id;
+            var uni = document.getElementById("uni").value;
+            if(uni=="")
+            {
+                alert("University Name can not be empty");
+            }
+            document.getElementById("a3").innerHTML = "University Name: " + uni;
+            var sscgpa = document.getElementById("sscgpa").value;
+            var hscgpa = document.getElementById("hscgpa").value;
+            if(sscgpa>5 || sscgpa<0 || hscgpa>5 || hscgpa<0)
+            {
+                alert("GPA must be between 0 to 5");
+            }
+            var box = document.getElementsByClassName("box");
+            var last = " ";
+            for(var i=0;box[i];i++)
+            {
+                if(box[i].checked)
+                {
+                    last+=box[i].value + ", ";
+                }
+            }
+            document.getElementById("last").innerHTML= "Proficiency in Programming Language: "+last;
+            var hscI = document.getElementById("hsci").value;
+            var sscI = document.getElementById("ssci").value;
+            document.getElementById("hscI").innerHTML=hscI;
+            document.getElementById("hscR").innerHTML=hscgpa;
+            document.getElementById("sscR").innerHTML=sscgpa;
+            document.getElementById("sscI").innerHTML=sscI;
+        }
+
+        function cgpa()
+        {
+            var name = ["Yash","Nabila", "Sumon", "Sinthia"];
+            var cgpa1 = [3.89, 3.89, 3.60, 3.75];
+            var cgpa2 = [4.00, 3.96, 3.34, 3.9];
+            var cgpaX = [];
+            var printX = "";
+            var temp = 0;
+            var temp1, temp2;
+            for(var i=0;i<name.length;i++)
+            {
+                for(var j=i+1;j<name.length;j++)
+                {
+                    if(cgpa1[i]<cgpa1[j])
+                    {
+                        temp= cgpa1[j];
+                        cgpa1[j]= cgpa1[i];
+                        cgpa1[i]=temp;
+    
+                        temp1= cgpa2[j];
+                        cgpa2[j]= cgpa2[i];
+                        cgpa2[i]=temp1;
+    
+                        temp2= name[j];
+                        name[j]= name[i];
+                        name[i]=temp2;
+    
+    
+                    }
+                    else if(cgpa1[i]==cgpa1[j])
+                    {
+                        if(cgpa2[i]<cgpa2[j])
+                        {
+                            temp= cgpa1[j];
+                            cgpa1[j]= cgpa1[i];
+                            cgpa1[i]=temp;
+    
+                            
+                            temp1= cgpa2[j];
+                            cgpa2[j]= cgpa2[i];
+                            cgpa2[i]=temp1;
+    
+                            temp2= name[j];
+                            name[j]= name[i];
+                            name[i]=temp2;
+                        }
+                    }
+                }
+            }
+            for(var i=0;i<name.length;i++)
+            {
+                printX =printX + name[i]+"--"+cgpa1[i].toFixed(2)+"--"+cgpa2[i].toFixed(2)+ "<br>";
+            }
+            document.getElementById("display1").innerHTML = printX;
+        }
+    
+        function fibo()
+        {
+            var text = " ";
+            var x=0;
+            var y=1;
+            var q= parseInt(document.getElementById("num1").value);
+            var ans=[x,y];
+            for(var i =2;i<q;i++)
+            {
+                ans[i]= parseInt(ans[i-2]) + parseInt(ans[i-1]);
+            }
+            for( var i=0;i<ans.length;i++)
+            {
+                text = text + ans[i] + "  ";
+                
+            }
+            document.getElementById("display").innerHTML = text;
+        }
+    
+        
+    </script>
+</body>
+
+</html>
